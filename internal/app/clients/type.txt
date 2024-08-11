@@ -1,0 +1,27 @@
+package clients
+
+import (
+	"context"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v4"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v2"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armresources"
+	"x/internal/app/model"
+)
+
+
+type armEntity interface {
+	*armresources.ResourceGroup | *armcompute.VirtualMachine | *armnetwork.VirtualNetwork |
+		*armnetwork.Subnet | *armnetwork.PublicIPAddress | *armnetwork.Interface
+}
+
+type modelEntity interface {
+	*model.ResourceGroup | *model.VirtualMachine | *model.VirtualNetwork |
+		*model.Subnet | *model.PublicIP | *model.NetworkInterface
+	//Validate()
+}
+
+type Client[T modelEntity, R armEntity] interface {
+	Create(ctx context.Context, resource T) (R, error)
+	Delete(ctx context.Context, resource T) error
+	List(ctx context.Context, resource T) ([]R, error)
+}

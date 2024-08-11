@@ -1,0 +1,37 @@
+type StorageProfile struct {
+    DataDisks          []*DataDisk                >> data disk added to a virtual machine
+    DiskControllerType *DiskControllerTypes
+    ImageReference     *ImageReference
+    OSDisk             *OSDisk                    >> operating system disk added to the virtual machine
+}
+
+EVERY vm has one attached OPERATING SYSTEM disk >> (os disk has a preinstalled os, which was selected when the vm was created)
+GENERALLY YOU SHOULD ONLY OS INFORMATION ON THE OS DISK, AND STORE ALL APPLICATIONS, AND DATA ON DATA DISK
+(however, if cost is a concern, you can use the OS disk instead of creating a data disk)
+
+-------------||------------------------
+------------\  /-----------------------
+-------------\/------------------------
+
+type OSDisk struct {
+    CreateOption            *DiskCreateOptionTypes >> REQUIRED(*)
+    Caching                 *CachingTypes
+    DeleteOption            *DiskDeleteOptionTypes
+    DiffDiskSettings        *DiffDiskSettings
+    DiskSizeGB              *int32
+    EncryptionSettings      *DiskEncryptionSettings
+    Image                   *VirtualHardDisk
+    ManagedDisk             *ManagedDiskParameters
+    Name                    *string
+    OSType                  *OperatingSystemTypes
+    Vhd                     *VirtualHardDisk
+    WriteAcceleratorEnabled *bool
+}
+
+
+(*)specifies how the virtual machine should be created
+ATTACH => when you are using a specialized disk to create the virtual machine
+FROM IMAGE => when you are using an image to create the vm:
+     if you are using a platform image >> use the imageReference element
+     if you are using a marketplace image >> use the plan element
+...

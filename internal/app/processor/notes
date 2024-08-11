@@ -1,0 +1,217 @@
+example payload json public key authentication:
+{
+    "action": "create",
+    "entities": [
+        {
+            "type": "resource group",
+            "meta": {
+                "resourceGroupName": "test6",
+                "location": "eastus",
+                "tags": {
+                    "tag1": "x",
+                    "tag2": "y"
+                }
+            }
+        },
+        {
+            "type": "virtual network",
+            "meta": {
+                "vnetName": "myVnet",
+                "location": "eastus",
+                "addressSpace": [
+                    "10.0.0.0/16"
+                ],
+                "tags": {
+                    "tagx": "xx",
+                    "tagy": "yy"
+                }
+            }
+        },
+        {
+            "type": "subnet",
+            "meta": {
+                "subnetName": "mySubnet",
+                "addressPrefix": "10.0.0.0/24"
+            }
+        },
+        {
+            "type": "public ip",
+            "meta": {
+                "allocationMethod": "Static",
+                "ipName": "myIP",
+                "location": "eastus",
+                "sku": "Standard",
+                "version": "IPv4",
+                "tags": {
+                    "tagz": "z",
+                    "tagw": "w"
+                }
+            }
+        },
+        {
+            "type": "network security group",
+            "meta": {
+               "name": "nsg1",
+                "rules":[
+                {
+                    "name":                    "rule1",
+                    "source" :                  "0.0.0.0/0",
+                    "sourcePortRange":          "*",
+                    "destination":              "0.0.0.0/0",
+                    "destinationPortRange":     "22",
+                    "protocol":                 "tcp",
+                    "access":                   "allow",
+                    "priority":                 "100",
+                    "description":              "allow inbound port 22",
+                    "direction":                "inbound"
+   
+                }
+             ]
+}
+        },
+        {
+            "type": "network interface",
+            "meta": {
+                "name": "myNetworkInterface",
+                "allocationMethodPrivateIp": "Dynamic",
+                "ipName": "myPrivateIP",
+                "location": "eastus",
+                "ipConfigurationName": "myIPConfiguration",
+                "tags": {
+                    "environment": "development",
+                    "project": "project"
+                }
+            }
+        },
+        {
+            "type": "virtual machine",
+            "meta": {
+                "vm_name": "myVM",
+                "location": "eastus",
+                "image_publisher": "OpenLogic",
+                "image_offer": "CentOS",
+                "image_sku": "8_5-gen2",
+                "image_version": "latest",
+                "vm_size": "Standard_B1ls",
+                "osdisk_name": "myosdisk",
+                "authentication" : {
+                    "authentication_type": "public key",
+                    "authentication_data": {
+                        "ssh_public_key_name": "myKeys",
+                        "admin_username": "chous",
+                        "computer_name": "mysshmachine"
+                    }
+                }
+            }
+        }
+    ]
+}
+---------------------------------------------------------------------------
+example payload json password authentication:
+{
+    "action": "create",
+    "entities": [
+        {
+            "type": "resource group",
+            "meta": {
+                "resourceGroupName": "test6",
+                "location": "eastus",
+                "tags": {
+                    "tag1": "x",
+                    "tag2": "y"
+                }
+            }
+        },
+        {
+            "type": "virtual network",
+            "meta": {
+                "vnetName": "myVnet",
+                "location": "eastus",
+                "addressSpace": [
+                    "10.0.0.0/16"
+                ],
+                "tags": {
+                    "tagx": "xx",
+                    "tagy": "yy"
+                }
+            }
+        },
+        {
+            "type": "subnet",
+            "meta": {
+                "subnetName": "mySubnet",
+                "addressPrefix": "10.0.0.0/24"
+            }
+        },
+        {
+            "type": "public ip",
+            "meta": {
+                "allocationMethod": "Static",
+                "ipName": "myIP",
+                "location": "eastus",
+                "sku": "Standard",
+                "version": "IPv4",
+                "tags": {
+                    "tagz": "z",
+                    "tagw": "w"
+                }
+            }
+        },
+        {
+            "type": "network security group",
+            "meta": {
+               "name": "nsg1",
+                "rules":[
+                {
+                    "name":                    "rule1",
+                    "source" :                  "0.0.0.0/0",
+                    "sourcePortRange":          "*",
+                    "destination":              "0.0.0.0/0",
+                    "destinationPortRange":     "22",
+                    "protocol":                 "tcp",
+                    "access":                   "allow",
+                    "priority":                 "100",
+                    "description":              "allow inbound port 22",
+                    "direction":                "inbound"
+
+                }
+             ]
+}
+        },
+        {
+            "type": "network interface",
+            "meta": {
+                "name": "myNetworkInterface",
+                "allocationMethodPrivateIp": "Dynamic",
+                "ipName": "myPrivateIP",
+                "location": "eastus",
+                "ipConfigurationName": "myIPConfiguration",
+                "tags": {
+                    "environment": "development",
+                    "project": "project"
+                }
+            }
+        },
+        {
+            "type": "virtual machine",
+            "meta": {
+                "vm_name": "myVM",
+                "location": "eastus",
+                "image_publisher": "OpenLogic",
+                "image_offer": "CentOS",
+                "image_sku": "8_5-gen2",
+                "image_version": "latest",
+                "vm_size": "Standard_B1ls",
+                "osdisk_name": "myosdisk",
+                "authentication" : {
+                    "authentication_type": "password",
+                    "authentication_data": {
+                        "computer_name": "mypasswordmachine",
+                        "admin_username": "chous",
+                        "admin_password": "Password123!"
+                    }
+                }
+            }
+        }
+    ]
+}
