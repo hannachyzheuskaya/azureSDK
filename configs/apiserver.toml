@@ -2,8 +2,5 @@ bind_addr = ":8087"
 logger_type = "text"
 session_key = "nkasndcbgiuwqbjijihiugywqgyugylnkjnjbvy"
 
-#client_id = "13f0ae25-6a83-4fcd-84fa-7c477b544e05"
-#client_secret = "DAs8Q~GV5.Cu-ACbS1xbAhl2H~F.3hNgERIyDdBm"
-#subscription_id = "f780bc07-0f69-426e-834c-769b0cad206f"
-#tenant_id = "78e527a7-837d-4b1f-bf7b-1706eeb92454"
+
 
